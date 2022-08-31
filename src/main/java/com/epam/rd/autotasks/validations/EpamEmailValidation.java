@@ -6,7 +6,24 @@ import java.util.regex.Pattern;
 public class EpamEmailValidation {
 
     public static boolean validateEpamEmail(String email) {
-        // Put your code here
+
+        if(email == null || email.equals("")) return false;
+
+        Pattern emailPatt = Pattern.compile("^([a-zA-z]+)" +
+                "_" +
+                "([a-zA-z]+)" +
+                "([\\d]*)" +
+                "@epam.com" +
+                "$"
+        );
+
+        //"^([a-zA-z]+)_([a-zA-z]+)([\\d]*)@epam.com$"
+
+        Matcher m = emailPatt.matcher(email);
+
+        if(m.matches()) return true;
+
+        return false;
 
     }
 }
